@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVOLUTIONIZE - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            background: url('https://www.w3schools.com/w3images/forest.jpg') center/cover no-repeat;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        button {
+            background: #4CAF50;
+            border-radius: 50px;
+            padding: 15px 30px;
+            width: 300px;
+            color: #fff;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #2e7d32;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.7); 
+            border-radius: 15px;
+            padding: 30px;
+            width: 320px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-transform: uppercase;
+        }
+
+        .signup-form {
+            margin-top: 20px;
+        }
+
+        .signup-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff; 
+            font-weight: bold;
+        }
+
+        .signup-form input {
+            width: calc(100% - 20px); 
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #fff; 
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white; 
+            font-size: 1em;
+        }
+
+        .signup-form input[type="password"] {
+            color: white; 
+        }
+
+        .signup-form input[type="submit"] {
+            background-color: #4CAF50; 
+            color: white;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        .signup-form input[type="submit"]:hover {
+            background-color: #2e7d32; 
+        }
+
+        .signup-form input[type="submit"]:focus {
+            outline: none;
+        }
+
+        .password-specifications {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .password-specifications ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .password-specifications li {
+            margin: 5px 0;
+        }
+
+        .password-specifications li.valid {
+            color: green;
+        }
+
+        .password-specifications li.invalid {
+            color: red;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 18px;
+            color: #4CAF50;
+            cursor: pointer;
+        }
+
+        .eye-icon:hover {
+            color: #2e7d32;
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="form-container">
+            <div class="form-body">
+                <div class="signup-form">
+                    <h2 class="title">Join the Revolution</h2>
+                    <p>Sign up to make a difference by helping transform trash into a sustainable path!</p>
+                    
+                    <form action="signup-success.html" method="POST" class="the-form" onsubmit="return validateForm()">
+                        <label for="signup-email">Email</label>
+                        <input type="email" name="signup-email" id="signup-email" placeholder="Enter your email">
+
+                        <label for="signup-password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" name="signup-password" id="signup-password" placeholder="Enter your password">
+                            <i class="fas fa-eye eye-icon" onclick="togglePassword('signup-password')"></i>
+                        </div>
+
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm your password">
+                            <i class="fas fa-eye eye-icon" onclick="togglePassword('confirm-password')"></i>
+                        </div>
+                        <label for="password-specifications">Password Must Contain:</label>
+                        <div class="password-specifications">
+                            <ul>
+                                <li id="length" class="invalid">At least 8 characters</li>
+                                <li id="uppercase" class="invalid">At least 1 uppercase letter</li>
+                                <li id="lowercase" class="invalid">At least 1 lowercase letter</li>
+                                <li id="number" class="invalid">At least 1 number</li>
+                                <li id="special" class="invalid">At least 1 special character</li>
+                            </ul>
+                        </div>
+
+                        <button type="submit">Sign Up</button>
+                    </form>
+
+                    <script>
+                        const passwordInput = document.getElementById('signup-password');
+                        const confirmPasswordInput = document.getElementById('confirm-password');
+                        const lengthRule = document.getElementById('length');
+                        const uppercaseRule = document.getElementById('uppercase');
+                        const lowercaseRule = document.getElementById('lowercase');
+                        const numberRule = document.getElementById('number');
+                        const specialRule = document.getElementById('special');
+
+                        const passwordPattern = {
+                            length: /^.{8,}$/,
+                            uppercase: /[A-Z]/,
+                            lowercase: /[a-z]/,
+                            number: /\d/,
+                            special: /[@$!%*?&]/
+                        };
+
+                        function validatePassword(input) {
+                            let passwordValue = input.value;
+
+                            if (passwordPattern.length.test(passwordValue)) {
+                                lengthRule.classList.remove('invalid');
+                                lengthRule.classList.add('valid');
+                            } else {
+                                lengthRule.classList.remove('valid');
+                                lengthRule.classList.add('invalid');
+                            }
+
+                            if (passwordPattern.uppercase.test(passwordValue)) {
+                                uppercaseRule.classList.remove('invalid');
+                                uppercaseRule.classList.add('valid');
+                            } else {
+                                uppercaseRule.classList.remove('valid');
+                                uppercaseRule.classList.add('invalid');
+                            }
+
+                            if (passwordPattern.lowercase.test(passwordValue)) {
+                                lowercaseRule.classList.remove('invalid');
+                                lowercaseRule.classList.add('valid');
+                            } else {
+                                lowercaseRule.classList.remove('valid');
+                                lowercaseRule.classList.add('invalid');
+                            }
+
+                            if (passwordPattern.number.test(passwordValue)) {
+                                numberRule.classList.remove('invalid');
+                                numberRule.classList.add('valid');
+                            } else {
+                                numberRule.classList.remove('valid');
+                                numberRule.classList.add('invalid');
+                            }
+
+                            if (passwordPattern.special.test(passwordValue)) {
+                                specialRule.classList.remove('invalid');
+                                specialRule.classList.add('valid');
+                            } else {
+                                specialRule.classList.remove('valid');
+                                specialRule.classList.add('invalid');
+                            }
+                        }
+
+                        function togglePassword(id) {
+                            const passwordField = document.getElementById(id);
+                            const currentType = passwordField.type;
+                            passwordField.type = currentType === "password" ? "text" : "password";
+                        }
+
+                        passwordInput.addEventListener('input', () => validatePassword(passwordInput));
+                        confirmPasswordInput.addEventListener('input', () => validatePassword(confirmPasswordInput));
+
+                        function validateForm() {
+                            const emailInput = document.getElementById('signup-email').value;
+                            const password = passwordInput.value;
+                            const confirmPassword = confirmPasswordInput.value;
+
+                            if (!emailInput || !password || !confirmPassword) {
+                                alert("Please fill out all fields.");
+                                return false;
+                            }
+
+                            if (password !== confirmPassword) {
+                                alert("Passwords do not match!");
+                                return false;
+                            }
+
+                            if (
+                                !passwordPattern.length.test(password) ||
+                                !passwordPattern.uppercase.test(password) ||
+                                !passwordPattern.lowercase.test(password) ||
+                                !passwordPattern.number.test(password) ||
+                                !passwordPattern.special.test(password)
+                            ) {
+                                alert("Please ensure the password meets all requirements.");
+                                return false;
+                            }
+
+                            window.location.href = 'signin.html';
+                            return false;
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

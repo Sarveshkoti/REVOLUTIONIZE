@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REVOLUTIONIZE</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #F5F5F5;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3em;
+      color: #fff;
+      background: linear-gradient(45deg, black,grey, rgb(73, 177, 73));
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+      animation: floatTitle 5s ease-in-out infinite;
+    }
+
+    @keyframes floatTitle {
+      0% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-15px);
+      }
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #070b07;
+      flex-direction: column;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 100px;
+    }
+
+    .category {
+      border-radius: 15px;
+      padding: 30px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      color: white;
+    }
+
+    .category:nth-child(1) {
+      background: url('cat1.jpg') center/cover no-repeat;
+      color: rgb(52, 29, 29);;
+    }
+
+    .category:nth-child(2) {
+      background: url('cat2.jpg') center/cover no-repeat;
+      color: black; 
+    }
+
+    .category:nth-child(3) {
+      background: url('cat3.jpg') center/cover no-repeat;
+      color: #eadef8; 
+    }
+
+    .category:nth-child(4) {
+      background: url('cat4.jpg') center/cover no-repeat;
+      color: black; 
+    }
+
+    .category:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .category h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .category p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    @media screen and (max-width: 768px) {
+      .categories {
+        grid-template-columns: 1fr;
+        margin-top: 60px;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        padding: 15px 30px;
+      }
+    }
+
+    .category button {
+      background: #ff1493;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s;
+    }
+
+    .category button:hover {
+      background: #ff6347;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>REVOLUTIONIZE</h1>
+
+  <div class="container">
+    <div class="categories">
+      <div class="category">
+        <h2>Paper Waste</h2>
+        <p>Recycling paper to reduce deforestation and ensure eco-friendly paper production.</p>
+        <button onclick="window.location.href='paper_waste.html'">Start Recycle</button>
+      </div>
+      <div class="category">
+        <h2>Plastic Waste</h2>
+        <p>Strategies to manage and recycle plastic waste, reducing landfill and ocean pollution.</p>
+        <button onclick="window.location.href='plastic_waste.html'">Start Recycle</button>
+      </div>
+      <div class="category">
+        <h2>E-Waste</h2>
+        <p>Proper disposal of electronic waste to reduce environmental hazards and recover valuable materials.</p>
+        <button onclick="window.location.href='ewaste.html'">Start Recycle</button>
+      </div>
+      <div class="category">
+        <h2>Medical Waste</h2>
+        <p>Safe and sustainable ways to handle medical waste to prevent contamination and pollution.</p>
+        <button onclick="window.location.href='medical_waste.html'">Start Recycle</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

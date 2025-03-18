@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycling Request Details</title>
+  <style>
+    /* Add your styling here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .container h1 {
+      text-align: center;
+    }
+    .container p {
+      font-size: 1.2em;
+    }
+    .highlight {
+      color: #00ff00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Recycling Request Details</h1>
+    <p><strong>Your Name:</strong> <span id="name"></span></p>
+    <p><strong>Device to Recycle:</strong> <span id="recycle_device"></span></p>
+    <p><strong>Quantity (gms):</strong> <span id="quantity"></span></p>
+    <p><strong>Pickup Location:</strong> <span id="location"></span></p>
+    <p><strong>Pickup Time:</strong> <span id="pickup-time"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Phone Number:</strong> <span id="phone"></span></p>
+  </div>
+
+  <script>
+    // Get stored form data from localStorage
+    document.getElementById("name").textContent = localStorage.getItem("name");
+    document.getElementById("recycle_device").textContent = localStorage.getItem("recycle_device");
+    document.getElementById("quantity").textContent = localStorage.getItem("quantity");
+    document.getElementById("location").textContent = localStorage.getItem("location");
+    document.getElementById("pickup-time").textContent = localStorage.getItem("pickup-time");
+    document.getElementById("email").textContent = localStorage.getItem("email");
+    document.getElementById("phone").textContent = localStorage.getItem("phone");
+  </script>
+</body>
+</html>

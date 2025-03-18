@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Your Pickup</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(#f9f6f6, rgb(90, 176, 213));
+            color: #333;
+            text-align: center;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #39a0ca;
+            color: white;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #47aa47;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Schedule Your Pickup</h2>
+        <form action="submit_form.php" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="contact_number">Contact Number:</label>
+                <input type="tel" class="form-control" id="contact_number" name="contact_number" required placeholder="Enter your contact number">
+            </div>
+            <div class="form-group">
+                <label for="items">Items to Recycle:</label>
+                <select class="form-control" id="items" name="items[]" multiple required>
+                    <option value="batteries">Batteries</option>
+                    <option value="servers">Servers</option>
+                    <option value="speakers">Speakers</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="desktops">Desktops</option>
+                    <option value="phones">Phones</option>
+                    <option value="tablets">Tablets</option>
+                    <option value="watches">Watches</option>
+                    <option value="stereos">Stereos</option>
+                    <option value="pianos">Pianos</option>
+                    <option value="printers">Printers</option>
+                    <option value="cables">Cables</option>
+                    <option value="parts">Parts</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

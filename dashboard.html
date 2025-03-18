@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRecycle - Choose Account Type</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+        .highlight {
+            color: #00ff00;
+        }
+
+        /* Header */
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .choose-text {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Account type options */
+        .account-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .account-option {
+            background-color: #222;
+            padding: 30px;
+            width: 200px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .account-option:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #38b000;
+            margin-bottom: 20px;
+        }
+
+        .option-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .option-description {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Recycling Centers</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="header"><span class="highlight">REVOLUTIONIZE</span></div>
+    <div class="choose-text">Choose Your Account Type</div>
+    <div class="account-container">
+        <!-- Individual User Option -->
+        <a href="signin.html" class="account-option"> <!-- Link to the sign-in page -->
+            <div class="icon">👨🏻‍💼</div>
+            <div class="option-title">Individual User</div>
+            <div class="option-description">Recycle your e-waste, earn rewards, and schedule doorstep pickups</div>
+        </a>
+
+        <!-- Recycling Business Option -->
+        <a href="bsignin.html" class="account-option"> <!-- Link to the business sign-in page -->
+            <div class="icon">♻</div>
+            <div class="option-title">Recycling Business</div>
+            <div class="option-description">Manage your recycling center, process requests, and track operations</div>
+        </a>
+    </div>
+</body>
+</html>

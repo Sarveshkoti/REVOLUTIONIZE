@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Signup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+      background-color: #121212;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      display: flex;
+      justify-content: center;
+    }
+
+    .icon svg {
+      width: 48px;
+      height: 48px;
+      fill: #3c9c1c;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 1rem 0 0.5rem;
+    }
+
+    p {
+      text-align: center;
+      margin: 0;
+      color: gray;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 1rem 0;
+      background-color: #3c9c1c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #4caf1f;
+    }
+
+    .divider {
+      position: relative;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background-color: gray;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .divider span {
+      position: relative;
+      background-color: #121212;
+      padding: 0 10px;
+      color: gray;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: white;
+    }
+
+    input::placeholder {
+      color: gray;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .link {
+      text-align: center;
+      color: #3c9c1c;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .link:hover {
+      color: #4caf1f;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: gray;
+      font-size: 0.9rem;
+    }
+
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+    }
+
+    .back-link:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path d="M3 10h18M5 10v8a1 1 0 001 1h2a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h2a1 1 0 001-1v-8m-4-6h-4m-4 0h4"></path>
+      </svg>
+    </div>
+    <h2>Business Signup</h2>
+    <p>Access your recycling center dashboard</p>
+
+    <button class="button">Continue with Google</button>
+
+    <div class="divider">
+      <span>Or continue with</span>
+    </div>
+
+    <form action="bsignin.html" method="GET">
+      <input type="text" placeholder="Business Name" required>
+      <input type="text" placeholder="Business Address" required>
+      <div class="form-row">
+        <input type="number" placeholder="Latitude" step="any" required>
+        <input type="number" placeholder="Longitude" step="any" required>
+      </div>
+      <input type="text" placeholder="Accepted Items" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Password" required>
+      <button class="button" type="submit">Sign Up</button>
+    </form>
+
+    <a href="signin.html" class="link">Already have an account? Signin</a>
+    <a href="index.html" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      Back to account type selection
+    </a>
+  </div>
+</body>
+</html>

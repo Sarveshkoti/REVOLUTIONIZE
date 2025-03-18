@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVOLUTIONIZE - Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background: url(signin.jpg) center/cover no-repeat;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-body {
+            margin-bottom: 20px;
+        }
+
+        .title {
+            color: rgb(156, 236, 156);
+            text-align: center;
+        }
+
+        .quote {
+            color: white;
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .the-form label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .the-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #fff;
+            border-radius: 70px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            position: relative;
+        }
+
+        .eye-icon {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .the-form input[type="submit"] {
+            background-color: #72b640;
+            color: white;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 70px;
+            width: 100%;
+        }
+
+        .the-form input[type="submit"]:hover {
+            background-color: #5a9e34;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="form-container">
+            <div class="form-body">
+                <h2 class="title">Sign In</h2>
+                <p class="quote">"Empowering a cleaner world, one step at a time."</p>
+
+                <form action="home.html" method="GET" class="the-form">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+
+                    <label for="password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                        <i class="fa fa-eye eye-icon" id="togglePassword" onclick="togglePassword()"></i>
+                    </div>
+
+                    <input type="submit" value="Submit">
+                </form>
+
+                <div class="form-footer">
+                    <span>Don't have an account?</span> <a href="signup.html">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.getElementById('togglePassword');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+
+</body>
+</html>

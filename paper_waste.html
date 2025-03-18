@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycling Initiative</title>
+  <style>
+    /* Reset and base styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header, .how-it-works, .accepted-items, .cta, footer {
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+    }
+
+    .highlight {
+      color: #00ff00;
+    }
+
+    /* Major cities styling */
+    .locations {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .location-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .location {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .location.major {
+      background: linear-gradient(135deg, #3e973e, black);
+    }
+
+    .location.coming-soon {
+      background: linear-gradient(135deg, #a62b2b, black);
+    }
+    
+    .learn-more-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #00ff00;
+      color: #000;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #222;
+      border-radius: 8px;
+    }
+
+    .how-it-works h3 {
+      background: linear-gradient(90deg, #00ff00, #7ac3de);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+    }
+    
+    .steps-container {
+      display: flex;
+      justify-content: space-around;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .step-container {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      flex: 1;
+      max-width: 300px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-container h4 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00ff00, #7ac3de);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .step-container p {
+      color: white;
+      font-size: 1.1em;
+    }
+
+    /* CTA Section */
+    .cta .get-started-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #3e973e, #7ac3de);
+      color: #000;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    footer a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+
+    .accepted-items-header {
+      text-align: center;
+      background: linear-gradient(90deg,  #7ac3de, #00ff00);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+      font-weight: bold;
+      margin: 40px 0 20px 0;
+    }
+
+    /* Accepted Items Container Styling */
+    .accepted-items {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .item {
+      background-color: #333;
+      color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      width: 200px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .item-icon {
+      font-size: 2.5em;
+      color: #00ff00;
+      margin-bottom: 15px;
+    }
+
+    .item h2 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg,  #7ac3de, #00ff00);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .item p {
+      font-size: 0.9em;
+      color: white;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+  }
+  label, select, input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      color: #ffffff;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal input[type="text"], .modal input[type="datetime-local"], .modal input[type="email"], .modal input[type="tel"] {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .submit-btn {
+      padding: 10px 20px;
+      background-color: #00ff00;
+      color: #000;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Our Presence Across <span class="highlight">Nation</span></h1>
+    <p>The EcoRecycler is established to serve a major part of India and is expanding to reach other parts of the country.</p>
+    
+    <!-- Major Cities -->
+    <div class="locations">
+      <div class="location-row">
+        <span class="location major">Hyderabad</span>
+        <span class="location major">Delhi</span>
+        <span class="location major">Bengaluru</span>
+        <span class="location major">Chennai</span>
+        <span class="location major">Mumbai</span>
+      </div>
+      <div class="location-row">
+        <span class="location coming-soon">Kolkatha (Coming Soon)</span>
+        <span class="location coming-soon">Raipur (Coming Soon)</span>
+        <span class="location coming-soon">Surat (Coming Soon)</span>
+        <span class="location coming-soon">Ahmedabad(Coming Soon)</span>
+        <span class="location coming-soon">Pune (Coming Soon)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h3>How It Works</h3>
+    <div class="steps-container">
+      <div class="step-container">
+        <h4>1. Schedule Pickup</h4>
+        <p>Book a convenient time for the pickup of your old devices.</p>
+      </div>
+      <div class="step-container">
+        <h4>2. Earn Points</h4>
+        <p>Collect points for every device you recycle with us.</p>
+      </div>
+      <div class="step-container">
+        <h4>3. Redeem Rewards</h4>
+        <p>Redeem your points for exciting rewards or discounts.</p>
+      </div>
+      <div class="step-container">
+        <h4>4. Earn Gift Vouchers</h4>
+        <p>Collect vouchers for every device you recycle with us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accepted Items -->
+  <section class="accepted-items">
+    <h2 class="accepted-items-header">Accepted Items :) "Recycling e-waste: Where innovation meets sustainability."</h2>
+    <div class="item">
+      <div class="item-icon">📔</div>
+      <h2> Books</h2>
+      <p>Old Books ,textbooks, Story books</p>
+    </div>
+    <div class="item">
+      <div class="item-icon">📦</div>
+      <h2>Cardboards</h2>
+      <p>Packaging boxes, paper bags, sacks</p>
+    </div>
+    <div class="item">
+      <div class="item-icon">📰</div>
+      <h2>News papers</h2>
+      <p>Old news papers of any date</p>
+    </div>
+    <div class="item">
+      <div class="item-icon">✉</div>
+      <h2>Envolopes</h2>
+      <p>Old envolopes , padded envolopes, envolopes with plastic coated </p>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <a href="#" class="get-started-btn" onclick="openModal()">Get Started with Recycling</a>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2024 EcoRecycler - Making the World Greener</p>
+    <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Modal for User Input -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Recycling Pickup Request</h2>
+      <form id="recycleForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="recycle_device">Selecting Recycle Device:</label>
+        <input list="recycle_devices" id="recycle_device" name="recycle_device" required>
+        <datalist id="recycle_devices">
+            <option value="paper bags">
+            <option value="cardboards">
+            <option value="newspaper">
+            <option value="books">
+            <option value="paper craft items">
+            <option value="posters">
+            <option value="packing boxes">
+            
+        </datalist>
+
+        <label for="quantity">Quantity(Approx in gms)</label>
+        <input type="text" id="quantity" name="quantity" required>
+
+        <label for="location">Pickup Location (Provide a Gmaps Link for Accurate Location)</label>
+        <input type="url" id="location" name="location" placeholder="https://maps.google.com/..." required>
+
+
+        <label for="pickup-time">Pickup Time</label>
+        <input type="datetime-local" id="pickup-time" name="pickup-time" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <button type="submit" class="submit-btn">Recycle</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    
+    document.getElementById("recycleForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Thank you for scheduling a pickup!");
+      closeModal();
+    });
+  </script>
+</body>
+</html>
