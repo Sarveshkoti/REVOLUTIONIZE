@@ -3,119 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoRecycle - Form Submission</title>
+    <title>Rewards Page</title>
     <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        
-        .form-container {
-            background-color: #222;
+        .dialog-box {
+            background: #333;
             padding: 20px;
             border-radius: 10px;
-            width: 300px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+            width: 320px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-
-        .form-container input[type="text"],
-        .form-container input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .form-container input[type="submit"] {
+        button {
             padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #38b000;
-            color: #fff;
-            cursor: pointer;
-            font-weight: bold;
         }
-
-        .form-container input[type="submit"]:hover {
-            background-color: #2e8b00;
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
-
-       
-        .reward-message {
+        .message {
+            color: red;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .coins-container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .coin {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('https://img.icons8.com/color/48/000000/coins.png') no-repeat center;
+            background-size: contain;
+            animation: fall 2s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .scratch-card {
             display: none;
             margin-top: 20px;
+            width: 200px;
+            height: 100px;
+            background: gray;
+            color: white;
+            line-height: 100px;
             font-size: 20px;
-            font-weight: bold;
-            animation: fadeInUp 1s ease-in-out;
+            border-radius: 5px;
         }
-
-        
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reward-message.pulse {
-            animation: pulse 1s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
+        .ok-btn {
+            display: none;
+            background: #4CAF50;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <form id="rewardForm">
-            <h2>Enter Details</h2>
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-
-    <div class="reward-message" id="rewardMessage">
+    <div class="dialog-box">
+        <h2>Choose Your Reward</h2>
+        <p id="message" class="message">❌ Dispose waste first to unlock rewards!</p>
+        <button id="coinsBtn" class="disabled">Coins</button>
+        <button id="scratchCardBtn" class="disabled">Scratch Card</button>
+        <div class="coins-container" id="coinsContainer"></div>
+        <div class="scratch-card" id="scratchCard">You Won!</div>
+        <button id="okBtn" class="ok-btn">OK</button>
     </div>
 
     <script>
-        document.getElementById("rewardForm").addEventListener("submit", function(event) {
-            event.preventDefault(); 
+        const coinsBtn = document.getElementById('coinsBtn');
+        const scratchCardBtn = document.getElementById('scratchCardBtn');
+        const coinsContainer = document.getElementById('coinsContainer');
+        const scratchCard = document.getElementById('scratchCard');
+        const message = document.getElementById('message');
+        const okBtn = document.getElementById('okBtn');
 
-            const rewards = ["Congratulations🥳 You earned reward points🎉", "Congrats! You got a voucher 🥳🎉"];
-            
-            const rewardMessage = rewards[Math.floor(Math.random() * rewards.length)];
+        const scratchRewards = [
+            "You won a 10% Discount!",
+            "You got 50 Bonus Coins!",
+            "You won Free Cashback!",
+            "You got 2x Reward Points!",
+            "You unlocked a Mystery Gift!"
+        ];
 
-            const rewardDisplay = document.getElementById("rewardMessage");
-            rewardDisplay.textContent = rewardMessage;
-            rewardDisplay.style.display = "block";
-            rewardDisplay.classList.add("pulse"); 
+        function checkWasteStatus() {
+            if (localStorage.getItem("wasteDisposed") === "true") {
+                coinsBtn.classList.remove("disabled");
+                scratchCardBtn.classList.remove("disabled");
+                coinsBtn.disabled = false;
+                scratchCardBtn.disabled = false;
+                message.style.display = "none";
+            } else {
+                coinsBtn.classList.add("disabled");
+                scratchCardBtn.classList.add("disabled");
+                coinsBtn.disabled = true;
+                scratchCardBtn.disabled = true;
+                message.style.display = "block";
+            }
+        }
+
+        function createCoinAnimation() {
+            for (let i = 0; i < 20; i++) {
+                let coin = document.createElement('div');
+                coin.classList.add('coin');
+                coin.style.left = Math.random() * window.innerWidth + 'px';
+                coin.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                coinsContainer.appendChild(coin);
+
+                setTimeout(() => {
+                    coin.remove();
+                }, 2000);
+            }
+        }
+
+        coinsBtn.addEventListener("click", () => {
+            if (coinsBtn.disabled) return;
+            coinsContainer.style.display = 'block';
+            createCoinAnimation();
+            setTimeout(() => {
+                alert("You received 50 coins! 🎉");
+                localStorage.setItem("wasteDisposed", "false");
+                okBtn.style.display = "block";
+            }, 2000);
         });
+
+        scratchCardBtn.addEventListener("click", () => {
+            if (scratchCardBtn.disabled) return;
+            scratchCard.innerText = scratchRewards[Math.floor(Math.random() * scratchRewards.length)];
+            scratchCard.style.display = "block";
+            setTimeout(() => {
+                okBtn.style.display = "block";
+            }, 2000);
+        });
+
+        okBtn.addEventListener("click", () => {
+            window.location.href = "home.html";
+        });
+
+        checkWasteStatus();
     </script>
 </body>
 </html>
