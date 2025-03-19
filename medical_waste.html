@@ -358,16 +358,16 @@ input, select {
         <label for="recycle_device">Selecting Recycle Device:</label>
         <input list="recycle_devices" id="recycle_device" name="recycle_device" required>
         <datalist id="recycle_devices">
-            <option value="needles">
-            <option value="used gloves">
-            <option value="syringes">
-            <option value="expired tablets">
-            <option value="unused vaccines">
-            <option value="disinfectants">
-            <option value="cleaning agents">
-            <option value="medicines">
-            <option value="dressings">
-            <option value="bandages">
+            <option value="Needles">
+            <option value="Used gloves">
+            <option value="Syringes">
+            <option value="Expired tablets">
+            <option value="Unused vaccines">
+            <option value="Disinfectants">
+            <option value="Cleaning agents">
+            <option value="Medicines">
+            <option value="Dressings">
+            <option value="Bandages">
         </datalist>
 
         <label for="quantity">Quantity(Approx in gms)</label>
@@ -400,11 +400,15 @@ input, select {
       document.getElementById("myModal").style.display = "none";
     }
 
-    
     document.getElementById("recycleForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Thank you for scheduling a pickup!");
-      closeModal();
+      var formData = new FormData(this);
+
+      formData.forEach(function(value, key) {
+        localStorage.setItem(key, value);
+      });
+
+      window.location.href = "bads.html";
     });
   </script>
 </body>
