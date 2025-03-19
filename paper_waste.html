@@ -358,13 +358,13 @@ input, select {
         <label for="recycle_device">Selecting Recycle Device:</label>
         <input list="recycle_devices" id="recycle_device" name="recycle_device" required>
         <datalist id="recycle_devices">
-            <option value="paper bags">
-            <option value="cardboards">
-            <option value="newspaper">
-            <option value="books">
-            <option value="paper craft items">
-            <option value="posters">
-            <option value="packing boxes">
+            <option value="Paper Bags">
+            <option value="Cardboards">
+            <option value="Newspaper">
+            <option value="Books">
+            <option value="Paper craft items">
+            <option value="Posters">
+            <option value="Packing Boxes">
             
         </datalist>
 
@@ -398,11 +398,15 @@ input, select {
       document.getElementById("myModal").style.display = "none";
     }
 
-    
     document.getElementById("recycleForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Thank you for scheduling a pickup!");
-      closeModal();
+      var formData = new FormData(this);
+
+      formData.forEach(function(value, key) {
+        localStorage.setItem(key, value);
+      });
+
+      window.location.href = "bads.html";
     });
   </script>
 </body>
