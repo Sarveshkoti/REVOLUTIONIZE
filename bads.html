@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recycling Request Details</title>
   <style>
-    /* Add your styling here */
     body {
       font-family: Arial, sans-serif;
       background-color: #1a1a1a;
       color: white;
       padding: 20px;
+      text-align: center;
     }
     .container {
       background-color: #333;
       border-radius: 10px;
       padding: 20px;
       margin-top: 20px;
+      display: inline-block;
+      text-align: left;
     }
     .container h1 {
       text-align: center;
@@ -26,6 +28,21 @@
     }
     .highlight {
       color: #00ff00;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #00ff00;
+      color: black;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #00cc00;
     }
   </style>
 </head>
@@ -39,10 +56,13 @@
     <p><strong>Pickup Time:</strong> <span id="pickup-time"></span></p>
     <p><strong>Email:</strong> <span id="email"></span></p>
     <p><strong>Phone Number:</strong> <span id="phone"></span></p>
+
+    <!-- OK Button -->
+    <button class="btn" onclick="redirectToIndex()">OK</button>
   </div>
 
   <script>
-    // Get stored form data from localStorage
+    // Load stored data from localStorage
     document.getElementById("name").textContent = localStorage.getItem("name");
     document.getElementById("recycle_device").textContent = localStorage.getItem("recycle_device");
     document.getElementById("quantity").textContent = localStorage.getItem("quantity");
@@ -50,6 +70,11 @@
     document.getElementById("pickup-time").textContent = localStorage.getItem("pickup-time");
     document.getElementById("email").textContent = localStorage.getItem("email");
     document.getElementById("phone").textContent = localStorage.getItem("phone");
+
+    // Redirect function
+    function redirectToIndex() {
+      window.location.href = "home.html"; // Change to your main page
+    }
   </script>
 </body>
 </html>
