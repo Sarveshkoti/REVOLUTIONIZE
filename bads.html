@@ -57,12 +57,11 @@
     <p><strong>Email:</strong> <span id="email"></span></p>
     <p><strong>Phone Number:</strong> <span id="phone"></span></p>
 
-    <!-- OK Button -->
     <button class="btn" onclick="redirectToIndex()">OK</button>
   </div>
 
   <script>
-    // Load stored data from localStorage
+  
     document.getElementById("name").textContent = localStorage.getItem("name");
     document.getElementById("recycle_device").textContent = localStorage.getItem("recycle_device");
     document.getElementById("quantity").textContent = localStorage.getItem("quantity");
@@ -71,9 +70,10 @@
     document.getElementById("email").textContent = localStorage.getItem("email");
     document.getElementById("phone").textContent = localStorage.getItem("phone");
 
-    // Redirect function
+
     function redirectToIndex() {
-      window.location.href = "home.html"; // Change to your main page
+      localStorage.setItem("wasteDisposed", "true"); 
+        window.location.href = "rewards.html";
     }
   </script>
 </body>
