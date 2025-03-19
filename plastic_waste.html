@@ -397,11 +397,15 @@ input, select {
       document.getElementById("myModal").style.display = "none";
     }
 
-    
     document.getElementById("recycleForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Thank you for scheduling a pickup!");
-      closeModal();
+      var formData = new FormData(this);
+
+      formData.forEach(function(value, key) {
+        localStorage.setItem(key, value);
+      });
+
+      window.location.href = "bads.html";
     });
   </script>
 </body>
